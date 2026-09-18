@@ -4,7 +4,7 @@ import re
 # each key position, then applies a Caesar shift to decrypt.
 
 INPUT_PATH = "ciphertext.txt"
-OUTPUT_PATH = "../../decrypted text.txt"
+OUTPUT_PATH = "../../decrypted_text.txt"
 
 WHITESPACE_PATTERN = re.compile(r"\s+")
 
