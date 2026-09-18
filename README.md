@@ -1,1 +1,45 @@
-# Breaking_the_Vigen-re_Cipher
+# Breaking the Vigenere Cipher
+
+This project demonstrates how to break and decrypt a ciphertext encrypted with
+the Vigenere cipher. It is part of a practical cryptography exercise.
+
+The analysis uses two techniques:
+
+- **Repetition analysis (Kasiski examination):** finds repeated substrings and
+	their distances to help estimate the length of the encryption key.
+- **Key-position analysis:** separates the ciphertext into one stream for each
+	key position. Each stream can then be treated as a Caesar cipher.
+
+## Project Files
+
+- `crypto/practical-02/ciphertext.txt` - the uppercase ciphertext.
+- `crypto/practical-02/repetition_finder.py` - finds repeated substrings and
+	reports their positions and distances.
+- `crypto/practical-02/every_ith_character.py` - decrypts the ciphertext using
+	the discovered shifts and prints the reconstructed plaintext.
+- `decrypted text.txt` - the resulting plaintext.
+
+## Requirements
+
+- Python 3
+- `art` 6.5, listed in `crypto/practical-02/requirements.txt`
+
+Install the listed dependency with:
+
+```bash
+pip install -r crypto/practical-02/requirements.txt
+```
+
+## Usage
+
+Run the commands from the practical's directory so the scripts can find
+`ciphertext.txt`:
+
+```bash
+cd crypto/practical-02
+python repetition_finder.py
+python every_ith_character.py
+```
+
+The decryption script currently uses the six shifts `[5, 0, 12, 14, 20, 18]`.
+It prints each key-position stream followed by the reconstructed plaintext.
