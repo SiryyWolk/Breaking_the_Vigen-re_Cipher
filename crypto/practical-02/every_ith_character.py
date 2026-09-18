@@ -4,6 +4,7 @@ import re
 # each key position, then applies a Caesar shift to decrypt.
 
 INPUT_PATH = "ciphertext.txt"
+OUTPUT_PATH = "../../decrypted text.txt"
 
 WHITESPACE_PATTERN = re.compile(r"\s+")
 
@@ -30,6 +31,8 @@ if __name__ == "__main__":
     input_ = read_input(INPUT_PATH)
     shifts = [5, 0, 12, 14, 20, 18]
     plaintext = decrypt(input_, shifts)
+    with open(OUTPUT_PATH, "w") as output_file:
+        output_file.write(plaintext + "\n")
     for i in range(len(shifts)):
         print(plaintext[i :: len(shifts)])
     print("Reconstructed plaintext:")
