@@ -8,7 +8,8 @@ The analysis uses two techniques:
 - **Repetition analysis (Kasiski examination):** finds repeated substrings and
 	their distances to help estimate the length of the encryption key.
 - **Key-position analysis:** separates the ciphertext into one stream for each
-	key position. Each stream can then be treated as a Caesar cipher.
+	key position. Each stream is tested against the relative frequencies of
+	letters in general English plaintext to automatically find its Caesar shift.
 
 ## Project Files
 
@@ -42,6 +43,9 @@ python repetition_finder.py
 python every_ith_character.py
 ```
 
-The decryption script currently uses the six shifts `[5, 0, 12, 14, 20, 18]`.
-It writes the reconstructed plaintext to `decrypted text.txt` and prints each
+The decryption script uses the six-character key length found by the repetition
+analysis. It tests every possible shift for each key position using a
+chi-squared comparison with the English frequencies from *Cryptographical
+Mathematics* by Robert Edward Lewand. It prints the discovered shifts and key,
+then writes the reconstructed plaintext to `decrypted_text.txt` and prints each
 key-position stream followed by the plaintext.
